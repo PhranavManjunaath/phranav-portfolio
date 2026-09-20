@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: #f9f9fb;
+  color: #111111;
+}
+
+::selection {
+  background-color: #111111;
+  color: #f9f9fb;
+}
+
+/* Masked text reveal wrappers (GSAP) */
+.split-line,
+.split-word,
+.split-char {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.split-inner,
+.split-char-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Pinned horizontal section: scrollable fallback until GSAP pins it */
+[data-horizontal] {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+[data-horizontal]::-webkit-scrollbar {
+  display: none;
+}
+
+[data-horizontal].is-pinned {
+  overflow-x: hidden;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
